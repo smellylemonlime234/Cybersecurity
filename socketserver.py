@@ -5,9 +5,9 @@ from colorama import Fore, Style
 Socket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 print("Waiting for client")
 
-#YOU WILL have to change this address to YOUR IP address
+#YOU WILL have to change this address to YOUR LAN address if you want a LAN connection
 #If you want to connect to devices outside of your LAN, you must enable port forwarding on your router at port 5600
-IP = "x.x.x.x"
+IP = "0.0.0.0"
 
 Socket.bind((IP, 5600))
 Socket.listen(1)
@@ -22,8 +22,7 @@ print("You are connected with", client_username)
 client.sendall(username.encode())
 
 while True:
-    print("please print the client username...")
-    print(client_username+': ',end='')
+    print(client_username+': ',end='', flush=True)
     client_message = client.recv(1024).decode()
     print(client_message)
 
