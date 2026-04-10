@@ -27,7 +27,7 @@ while True:
         break
     
     Socket.sendall(message.encode())
-    print(server_username+': ',end='')
+    print(server_username+': ',end='', flush=True)
     server_message = Socket.recv(1024).decode()
     print(server_message)
 
